@@ -1,0 +1,140 @@
+@startuml
+
+class GenerateTicketRequestDto {
+  vehicleNumber
+  gateId
+  vehicleType
+}
+
+class GenerateTicketResponseDto {
+  ticket
+}
+
+class HourlyParkingFeesStrategy {
+}
+
+class RandomSpotAssignmentStrategy {
+}
+
+class NearestSpotAssignmentStrategy {
+}
+
+class DayWiseParkingFeesStrategy {
+}
+
+class TicketRepository {
+}
+
+class ParkingFloor {
+  number
+  parkingSpots
+  parkingFloorStatus
+}
+
+class ParkingLot {
+  name
+  parkingFloors
+  gates
+  parkingLotStatus
+  address
+}
+
+class ParkingSpot {
+  parkingSpotStatus
+  supportedVehicleTypes
+  number
+}
+
+class EntryGate {
+}
+
+class ElectricCharger {
+}
+
+class Payment {
+  paymentMode
+  amount
+  paymentStatus
+  referenceId
+}
+
+class Operator {
+}
+
+class ElectricParkingSpot {
+  electricCharger
+}
+
+class BaseClass {
+  id
+}
+
+class ElectricMeter {
+  consumption
+}
+
+class Gate {
+  number
+  gateType
+  operator
+  gateStatus
+}
+
+class Ticket {
+  entryTime
+  vehicle
+  parkingSpot
+  operator
+  parkingLot
+  gate
+  ownerName
+}
+
+class Exitgate {
+}
+
+class Vehicle {
+}
+
+class Bill {
+  ticket
+  exitTime
+  amount
+  operator
+  gate
+  payments
+}
+
+class NoParkingSpotException {
+}
+
+class TicketController {
+  ticketService
+}
+
+class TicketService {
+  vehicleService
+  gateService
+  spotAssignmentStrategy
+  ticketRepository
+  parkingfeesStrategy
+}
+
+class GateService {
+}
+
+class VehicleService {
+}
+
+GenerateTicketResponseDto --> Ticket
+ParkingLot --> ParkingFloor
+ParkingFloor --> ParkingSpot
+Ticket --> Vehicle
+Ticket --> ParkingSpot
+Ticket --> Gate
+TicketController --> TicketService
+TicketService --> VehicleService
+TicketService --> GateService
+TicketService --> TicketRepository
+
+@enduml

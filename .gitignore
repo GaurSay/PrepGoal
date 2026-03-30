@@ -1,0 +1,17 @@
+# Mac
+.DS_Store
+
+# IntelliJ
+.idea/
+*.iml
+
+# Build folders
+target/
+out/
+build/
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
