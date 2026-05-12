@@ -5,6 +5,7 @@ import LowLevelDesign.Splitwise.Controllers.GroupController;
 import LowLevelDesign.Splitwise.Controllers.UserController;
 import LowLevelDesign.Splitwise.Models.ExpenseSplitType;
 import LowLevelDesign.Splitwise.Models.Group;
+import LowLevelDesign.Splitwise.Models.Transaction;
 import LowLevelDesign.Splitwise.Models.User;
 import LowLevelDesign.Splitwise.Services.BalanceService;
 import LowLevelDesign.Splitwise.Services.ExpenseService;
@@ -70,13 +71,22 @@ public class Splitwise {
 
         balanceService.showAllBalances(userMap);
 
+        balanceService.getUserSummary(u1.getUserId());
+
         SettlementService settlementService =
                 new SettlementService();
 
-        settlementService.settle(
+        List<Transaction> txns = settlementService.settle(
                 balanceService.getBalances());
 
-        balanceService.getUserSummary(u1.getUserId());
+//        for (Transaction t : txns) {
+//            System.out.println(t.from + " pays " + t.to + " : " + t.amount);
+//        }
+
+        // apply
+        settlementService.applySettlement(balanceService.getBalances(), txns);
+
+
 
     }
 

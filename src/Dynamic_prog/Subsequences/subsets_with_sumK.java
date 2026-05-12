@@ -1,4 +1,4 @@
-package Dynamic_prog;
+package Dynamic_prog.Subsequences;
 import java.util.*;
 public class subsets_with_sumK {
     public static void main(String[] args) {
@@ -16,7 +16,16 @@ public class subsets_with_sumK {
         int n = nums.length;
 
         //base case target =0
-        dp[0][0] = 1;
+//        for (int i = 0; i < n; i++) {
+//            dp[i][0] = 1;
+//        }
+        if (nums[0] == 0)
+            dp[0][0] = 2;
+        else
+            dp[0][0] = 1;
+
+        if (nums[0] != 0 && nums[0] <= target)
+            dp[0][nums[0]] = 1;
 
 
         // base case index = 0

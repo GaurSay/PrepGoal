@@ -1,4 +1,4 @@
-package Dynamic_prog;
+package Dynamic_prog.Subsequences;
 
 public class subset_equal_subset_sum {
 

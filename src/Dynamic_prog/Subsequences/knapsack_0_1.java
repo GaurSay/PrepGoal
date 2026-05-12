@@ -1,4 +1,4 @@
-package Dynamic_prog;
+package Dynamic_prog.Subsequences;
 
 import java.util.Arrays;
 

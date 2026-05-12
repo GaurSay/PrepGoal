@@ -12,10 +12,11 @@ public class All_permutations {
 
 
 
-        printAll(0,nums,nums.length,ds,freq);
+//        printAll(nums,nums.length,ds,freq);
+        permute(nums,0);
     }
 
-    private static void printAll(int index, int[] nums, int n,List<Integer> ds,boolean[] freq) {
+    private static void printAll(int[] nums, int n,List<Integer> ds,boolean[] freq) {
 
         if(ds.size() == n){
             for(int i=0;i<ds.size();i++){
@@ -29,10 +30,33 @@ public class All_permutations {
             if(!freq[i]){
                 freq[i] = true;
                 ds.add(nums[i]);
-                printAll(i+1,nums,n,ds,freq);
+                printAll(nums,n,ds,freq);
                 freq[i] = false;
                 ds.remove(ds.size()-1);
             }
         }
     }
+
+    static void permute(int[] nums, int index) {
+        if (index == nums.length) {
+            for(int i=0;i<nums.length;i++){
+                System.out.print(nums[i]+" ");
+            }
+            System.out.println();
+            return;
+        }
+
+        for (int i = index; i < nums.length; i++) {
+            swap(nums, index, i);
+            permute(nums, index + 1);
+            swap(nums, index, i); // backtrack
+        }
+    }
+
+    static void swap(int[] nums, int a,int b) {
+        int temp =  nums[a];
+        nums[a] = nums[b];
+        nums[b] =  temp;
+    }
+
 }

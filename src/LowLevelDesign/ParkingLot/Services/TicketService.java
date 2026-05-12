@@ -68,8 +68,8 @@ public class TicketService {
         bill.setTicket(ticket);
         bill.setGate(exitgate);
         Long exitTime = new Date().getTime();
-        double amount = parkingfeesStrategy.calculateParkingFees(ticket.getEntryTime().getTime(),exitTime);
-        bill.setAmount(amount);
+//        double amount = parkingfeesStrategy.calculateParkingFees(ticket.getEntryTime().getTime(),exitTime);
+//        bill.setAmount(amount);
         bill.setBillStatus(BillStatus.UNPAID);
         bill.setOperator(exitgate.getOperator());
 

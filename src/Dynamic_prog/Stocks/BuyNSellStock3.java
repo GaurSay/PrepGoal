@@ -6,6 +6,7 @@ public class BuyNSellStock3 {
         long[] prices = {7, 1, 5, 3, 6, 4};
         int k = 2;
         System.out.println(findMaxProfit(0, 0, prices.length, prices, k));
+        tabular(prices);
     }
 
     private static void tabular(long[] prices) {
@@ -42,25 +43,23 @@ public class BuyNSellStock3 {
             }
         }
 
-        System.out.println(dp[0][1][2]);
+        System.out.println(dp[0][0][2]);
     }
 
 
     private static long findMaxProfit(int index, int buy, int n, long[] prices, int k) {
 
-        if (index == n) {
+        if (index == n || k==0) {
             return 0;
         }
-        if (k == 0) {
-            return 0;
-        }
+
         long profit = 0;
         if (buy == 0) {
             profit = Math.max((-prices[index] + findMaxProfit(index + 1, 1, n, prices, k)),
                     findMaxProfit(index + 1, 0, n, prices, k));
         } else {
             profit = Math.max((prices[index] + findMaxProfit(index + 1, 0, n, prices, k - 1)),
-                    findMaxProfit(index + 1, 1, n, prices, 0));
+                    findMaxProfit(index + 1, 1, n, prices, k));
         }
 
         return profit;

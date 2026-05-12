@@ -1,4 +1,4 @@
-package Dynamic_prog;
+package Dynamic_prog.Subsequences;
 
 import java.util.Arrays;
 
@@ -16,9 +16,31 @@ public class coin_change2 {
 
         countWays(n - 1, coins, target, dp);
         System.out.println(dp[n-1][target]);
+        tabular(coins,target);
     }
 
     private static void tabular( int[] coins,int target){
+
+        int n = coins.length;
+        int[][] dp = new int[n][target+1];
+
+        for(int t=0;t<=target;t++){
+            if(t%coins[0] ==0){
+                dp[0][t] =  1;
+            }
+        }
+
+        for(int index=1;index<n;index++){
+            for(int t=0;t<=target;t++){
+                int notTake = dp[index-1][t];
+                int take = 0;
+                if(t>=coins[index]){
+                    take = dp[index][t-coins[index]];
+                }
+                dp[index][t] = take+notTake;
+            }
+        }
+        System.out.println(dp[n-1][target]);
 
     }
 

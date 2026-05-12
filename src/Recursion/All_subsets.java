@@ -9,8 +9,6 @@ public class All_subsets {
         int nums[] = {1,3,5};
         List<Integer> ds = new ArrayList<>();
 
-
-
         printAll(0,nums,nums.length,ds);
     }
 

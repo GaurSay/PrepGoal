@@ -1,4 +1,4 @@
-package Dynamic_prog;
+package Dynamic_prog.Subsequences;
 
 public class subset_min_abs_sum_diff{
     public static void main(String[] args) {

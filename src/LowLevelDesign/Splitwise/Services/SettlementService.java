@@ -1,9 +1,9 @@
 package LowLevelDesign.Splitwise.Services;
 
+import LowLevelDesign.Splitwise.Models.Transaction;
+
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class SettlementService {
 
@@ -18,7 +18,7 @@ public class SettlementService {
         }
     }
 
-    public void settle(Map<String, Map<String, BigDecimal>> balances) {
+    public List<Transaction> settle(Map<String, Map<String, BigDecimal>> balances) {
 
         Map<String, BigDecimal> netBalance = new HashMap<>();
 
@@ -34,6 +34,8 @@ public class SettlementService {
                 netBalance.put(v, netBalance.getOrDefault(v, BigDecimal.ZERO).add(amt));
             }
         }
+
+        List<Transaction> transactions = new ArrayList<>();
 
         PriorityQueue<Node> creditors = new PriorityQueue<>((a, b) -> b.amount.compareTo(a.amount));
 
@@ -58,6 +60,8 @@ public class SettlementService {
 
             System.out.println(debtor.userId + " pays " + creditor.userId + " : " + settle);
 
+            transactions.add(new Transaction(debtor.userId, creditor.userId, settle));
+
             creditor.amount = creditor.amount.subtract(settle);
 
             debtor.amount = debtor.amount.subtract(settle);
@@ -65,6 +69,43 @@ public class SettlementService {
             if (creditor.amount.compareTo(BigDecimal.ZERO) > 0) creditors.add(creditor);
 
             if (debtor.amount.compareTo(BigDecimal.ZERO) > 0) debtors.add(debtor);
+        }
+
+        return transactions;
+    }
+
+
+    public void applySettlement(
+            Map<String, Map<String, BigDecimal>> balances,
+            List<Transaction> transactions
+    ) {
+
+        for (Transaction t : transactions) {
+
+            String from = t.from;
+            String to = t.to;
+            BigDecimal amount = t.amount;
+
+            Map<String, BigDecimal> inner = balances.get(from);
+
+            if (inner == null) continue;
+
+            BigDecimal existing = inner.get(to);
+
+            if (existing == null) continue;
+
+            if (existing.compareTo(amount) > 0) {
+
+                inner.put(to, existing.subtract(amount));
+
+            } else {
+
+                inner.remove(to);
+
+                if (inner.isEmpty()) {
+                    balances.remove(from);
+                }
+            }
         }
     }
 }
