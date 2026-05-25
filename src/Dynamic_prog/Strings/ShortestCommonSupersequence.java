@@ -2,6 +2,9 @@ package Dynamic_prog.Strings;
 
 public class ShortestCommonSupersequence {
 
+
+    //Problem Statement: We are given two strings ‘S1’ and ‘S2’. We need to return their shortest common supersequence.
+    // A supersequence is defined as the string which contains both the strings S1 and S2 as subsequences.
     public static void main(String[] args) {
         String s1 = "groot";
         String s2 = "brute";

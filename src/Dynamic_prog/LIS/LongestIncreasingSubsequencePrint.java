@@ -42,11 +42,12 @@ public class LongestIncreasingSubsequencePrint {
                 lastIndex = i;
             }
         }
+
+        System.out.println(max);
         List<Integer> ans = new ArrayList<>();
 
 
         ans.add(nums[lastIndex]);
-//        System.out.print("debug " + nums[lastIndex]);
         while(hash[lastIndex] != lastIndex){
           lastIndex = hash[lastIndex];
           ans.add(nums[lastIndex]);

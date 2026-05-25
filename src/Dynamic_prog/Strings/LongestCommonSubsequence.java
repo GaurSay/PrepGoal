@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class LongestCommonSubsequence {
 
+
+    //Problem Description: Given two strings str1 and str2, print the longest common subsequence of the two strings.]
     public static void main(String[] args) {
         String s1 = "abcdeyha";
         String s2 = "aceywa";

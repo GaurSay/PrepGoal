@@ -1,6 +1,8 @@
 package Dynamic_prog.Strings;
 
 public class LongestCommonSubstring {
+
+    //Problem Statement: Given two strings str1 and str2, find the length of their longest common substring
     public static void main(String[] args) {
         String s1 = "abcdxyz";
         String s2 = "xyzabcd";
@@ -8,8 +10,6 @@ public class LongestCommonSubstring {
         int n = s2.length();
         tabular(s1,s2);
     }
-
-
 
     private static void tabular(String s1,String s2) {
         int m = s1.length();

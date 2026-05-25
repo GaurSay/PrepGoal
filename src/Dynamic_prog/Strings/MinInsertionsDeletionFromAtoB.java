@@ -2,6 +2,10 @@ package Dynamic_prog.Strings;
 
 public class MinInsertionsDeletionFromAtoB {
 
+    //Problem Statement: We are given two strings, str1 and str2. We are allowed the following operations:
+    //1. Delete any number of characters from string str1.
+    //2. Insert any number of characters in string str1.
+    //Return the minimum number of operations required to convert str1 to str2.
     public static void main(String[] args) {
         String s1 = "abcd";
         String s2 = "anc";

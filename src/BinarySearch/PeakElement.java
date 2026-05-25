@@ -1,6 +1,6 @@
 package BinarySearch;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class PeakElement {
     /*
@@ -10,7 +10,12 @@ public class PeakElement {
         For corner elements, we need to consider only one neighbor. We ensure that answer will be unique.
      */
 
-    public int solve(ArrayList<Integer> A) {
+    public static void main(String[] args) {
+        Integer arr[] = {1,2,3,4,5,6,7,8,5,1};
+        System.out.println(solve(List.of(arr)));
+    }
+
+    public static int solve(List<Integer> A) {
         int l = 0;
         int r = A.size()-1;
         while(l < r){

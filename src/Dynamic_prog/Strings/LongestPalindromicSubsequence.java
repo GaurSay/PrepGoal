@@ -2,6 +2,7 @@ package Dynamic_prog.Strings;
 
 public class LongestPalindromicSubsequence {
 
+    //Problem Statement: Given a string, Find the longest palindromic subsequence length in given string.
     public static void main(String[] args) {
         String s1 = "annb";
         StringBuilder sb = new StringBuilder(s1);

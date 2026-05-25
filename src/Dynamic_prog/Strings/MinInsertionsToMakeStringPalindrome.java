@@ -2,6 +2,10 @@ package Dynamic_prog.Strings;
 
 public class MinInsertionsToMakeStringPalindrome {
 
+
+    //Problem Statement: Given a string s, find the minimum number of insertions needed to make it a palindrome.
+    // A palindrome is a sequence that reads the same backward as forward.
+    // You can insert characters at any position in the string.
     public static void main(String[] args) {
         String s1 = "codingninjas";
         StringBuilder sb = new StringBuilder(s1);

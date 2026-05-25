@@ -1,11 +1,12 @@
 package Dynamic_prog.Stocks;
 
-public class BuyNSellStock3 {
+public class BuyNSellStock4 {
+
 
     public static void main(String[] args) {
         long[] prices = {7, 1, 5, 3, 6, 4};
         int k = 2;
-        //k can be anything in stock 4 question
+        // in this K is variable that is it.
         System.out.println(findMaxProfit(0, 0, prices.length, prices, k));
         tabular(prices);
     }
@@ -15,8 +16,6 @@ public class BuyNSellStock3 {
         int n = prices.length;
         int k = 2;
         long dp[][][] = new long[n + 1][2][k+1];
-
-        //k=0 , index and buy can be anything
 
         for (int i = n - 1; i >= 0; i--) {
             for (int j = 0; j <= 1; j++) {

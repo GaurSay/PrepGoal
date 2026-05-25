@@ -11,7 +11,7 @@ public class LongestIncreasingSubsequenceBinary {
         int nums[] = {1,7,8,4,5,6,-1,9};
         int n = nums.length;
 
-
+        //keep attaching in my temp and if increasing doesnt come then try and serach where can I fit it
         List<Integer> temp = new ArrayList<>();
 
         temp.add(nums[0]);
@@ -31,9 +31,6 @@ public class LongestIncreasingSubsequenceBinary {
             }
         }
         System.out.println(len);
-
-
-
 
     }
 }

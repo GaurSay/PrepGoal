@@ -1,3 +1,5 @@
+package Arrays;
+
 public class trial3 {
 
     public static void main(String[] args) {

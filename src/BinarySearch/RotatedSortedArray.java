@@ -1,6 +1,5 @@
 package BinarySearch;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RotatedSortedArray {
@@ -12,7 +11,13 @@ public class RotatedSortedArray {
         You are given a target value B to search. If found in the array, return its index otherwise, return -1.
      */
 
-    public int search(final List<Integer> A, int B) {
+    public static void main(String[] args) {
+        Integer[] arr = {4,5,6,7,0,1,2};
+        int k = 3;
+        System.out.println(search(List.of(arr),k));
+    }
+
+    public static int search(final List<Integer> A, int B) {
 
         int low = 0;
         int high = A.size()-1;
@@ -44,29 +49,4 @@ public class RotatedSortedArray {
         return -1;
     }
 
-
-
-    // ceiling in sorted array
-    public int solve(int A, ArrayList<Integer> B, int C) {
-
-        int ceil = -1;
-        int low = 0;
-        int high = B.size()-1;
-
-        while(low <= high){
-            int mid = (low+high)>>1;
-            if(B.get(mid) == C){
-                return C;
-            }
-            else if(B.get(mid) < C){
-                low = mid+1;
-            }
-            else{
-                ceil = B.get(mid);
-                high = mid-1;
-            }
-        }
-
-        return ceil;
-    }
 }
