@@ -24,7 +24,6 @@ public class LongestIncreasingSubsequencePrint {
         int[] hash = new int[n];
 
         Arrays.fill(dp,1);
-        int lis = 1;
 
         int lastIndex = 0;
         int max = 0;

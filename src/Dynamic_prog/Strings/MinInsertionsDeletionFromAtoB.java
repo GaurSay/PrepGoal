@@ -9,8 +9,8 @@ public class MinInsertionsDeletionFromAtoB {
     public static void main(String[] args) {
         String s1 = "abcd";
         String s2 = "anc";
-        //deletions - n -length(lcs)
-        //insertions - m - length(lcs)
+        //deletions - m -length(lcs)
+        //insertions - n - length(lcs)
         // n+m - 2*length(lcs)
 
         int m = s1.length();

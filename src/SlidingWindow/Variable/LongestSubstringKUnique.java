@@ -40,6 +40,8 @@ public class LongestSubstringKUnique {
     public static void main(String[] args) {
         String s = "aabacbebebe";
         int k = 3;
+        int arr[] ={};
+
 
         System.out.println(longestKUnique(s, k)); // Output: 7
     }

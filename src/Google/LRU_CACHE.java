@@ -53,8 +53,6 @@ public class LRU_CACHE {
         }
         insert(new Node(key,value));
     }
-
-
 }
 
 class Node{

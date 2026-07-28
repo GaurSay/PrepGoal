@@ -26,8 +26,6 @@ public class MaxOfAllSubArrays {
         ArrayDeque<Integer> dq = new ArrayDeque<>();
         List<Integer> ans = new ArrayList<>();
 
-        int j= 0;
-
         for (int i = 0; i < n; i++) {
             // Step 1: Remove out-of-window elements
             if (!dq.isEmpty() && dq.peekFirst() <= i - k) {

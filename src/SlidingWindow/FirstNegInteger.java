@@ -2,6 +2,7 @@ package SlidingWindow;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 public class FirstNegInteger {
@@ -17,28 +18,38 @@ public class FirstNegInteger {
 
     private static List<Integer> firstNegative(int[] arr, int k) {
 
-        ArrayDeque<Integer> dq = new ArrayDeque<>();
         List<Integer> ans = new ArrayList<>();
+        Deque<Integer> dq = new ArrayDeque<>();
 
-        int j= 0;
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
-            if(arr[i] < 0 ){
-                dq.addLast(i);
-            }
-            //remove outside window
-            if (!dq.isEmpty() && dq.peekFirst() <= i - k) {
-                dq.pollFirst();
+        int i = 0;
+
+        for (int j = 0; j < arr.length; j++) {
+
+            // add negative number
+            if (arr[j] < 0) {
+                dq.offerLast(j);
             }
 
-            if (i >= k - 1) {
+            // shrink if window > k
+            if (j - i + 1 > k) {
+
+                // remove expired negative
+                if (!dq.isEmpty() && dq.peekFirst() == i) {
+                    dq.pollFirst();
+                }
+
+                i++;
+            }
+
+            // valid window
+            if (j - i + 1 == k) {
+
                 if (!dq.isEmpty()) {
                     ans.add(arr[dq.peekFirst()]);
                 } else {
                     ans.add(0);
                 }
             }
-
         }
 
         return ans;

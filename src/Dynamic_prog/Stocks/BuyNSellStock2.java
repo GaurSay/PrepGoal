@@ -1,11 +1,18 @@
 package Dynamic_prog.Stocks;
 
+import java.util.Arrays;
+
 public class BuyNSellStock2 {
 
     public static void main(String[] args) {
         long[] prices = {7, 1, 5, 3, 6, 4};
-
-//        System.out.println(findMaxProfit(0,0,prices.length,prices));
+        int n = prices.length;
+        long dp[][] = new long[n][2];
+        for(long[] d: dp){
+            Arrays.fill(d,-1);
+        }
+        System.out.println(findMaxProfit(0,0,prices.length,prices,dp));
+//        System.out.println(dp[0][0]);
         tabular(prices);
     }
 
@@ -31,19 +38,23 @@ public class BuyNSellStock2 {
         System.out.println(dp[0][0]);
     }
 
-    private static long findMaxProfit(int index, int buy, int n, long[] prices) {
+    private static long findMaxProfit(int index, int buy, int n, long[] prices,long[][] dp) {
 
         if(index == n){
             return 0;
         }
+        if(dp[index][buy] != -1){
+            return dp[index][buy];
+        }
         long profit = 0;
         if(buy==0){
-            profit = Math.max((-prices[index] + findMaxProfit(index+1,1,n,prices)),
-                    findMaxProfit(index + 1, 0, n, prices));
+            profit = Math.max((-prices[index] + findMaxProfit(index+1,1,n,prices,dp)),
+                    findMaxProfit(index + 1, 0, n, prices,dp));
         } else{
-            profit = Math.max((prices[index] + findMaxProfit(index+1,0,n,prices)),
-                    findMaxProfit(index + 1, 1, n, prices));
+            profit = Math.max((prices[index] + findMaxProfit(index+1,0,n,prices,dp)),
+                    findMaxProfit(index + 1, 1, n, prices,dp));
         }
+        dp[index][buy] = profit;
 
         return profit;
     }

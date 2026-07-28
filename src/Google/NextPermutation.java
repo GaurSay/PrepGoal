@@ -2,6 +2,10 @@ package Google;
 
 public class NextPermutation {
 
+
+//    If the array is not completely descending, there exists a pivot where nums[i] < nums[i+1].
+//    Swap that pivot with the next larger element on its right.
+//    Reverse the suffix to make it as small as possible.
     public static void main(String[] args) {
         int nums[] = {3,2,1};
         int n = nums.length;
