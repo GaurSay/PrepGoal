@@ -30,12 +30,12 @@ public class CountAnagrams {
                 }
             }
 
-            // Step 3: window size < k
-            if (j - i + 1 < k) {
-                j++;
-            }
+//            // Step 3: window size < k
+//            if (j - i + 1 < k) {
+//                j++;
+//            }
             // Step 4: window size == k
-            else if (j - i + 1 == k) {
+            if (j - i + 1 == k) {
 
                 // check anagram
                 if (count == 0) {
@@ -52,8 +52,9 @@ public class CountAnagrams {
                 }
 
                 i++;
-                j++;
+
             }
+            j++;
         }
 
         return ans;

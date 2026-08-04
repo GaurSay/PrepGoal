@@ -1,4 +1,4 @@
-package SlidingWindow;
+package SlidingWindow.Variable;
 
 public class MinimumWindowSubstring {
 

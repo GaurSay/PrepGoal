@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Getter
 public class BalanceService {
-
+//    balances[debtor][creditor] = amount
     private final Map<String, Map<String, BigDecimal>> balances =
             new HashMap<>();
     //stores like who I have to pay -like first key is my userId, second is to whom I owe ( or mujhe kise paise dene hai)
@@ -34,6 +34,15 @@ public class BalanceService {
                             amount,
                             BigDecimal::add
                     );
+
+//            balances.putIfAbsent(userId, new HashMap<>());
+//
+//            Map<String, BigDecimal> userBalances = balances.get(userId);
+//
+//            BigDecimal existing =
+//                    userBalances.getOrDefault(paidById, BigDecimal.ZERO);
+//
+//            userBalances.put(paidById, existing.add(amount));
         }
     }
 

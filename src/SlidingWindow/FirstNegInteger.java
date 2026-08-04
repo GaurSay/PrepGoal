@@ -30,25 +30,19 @@ public class FirstNegInteger {
                 dq.offerLast(j);
             }
 
-            // shrink if window > k
-            if (j - i + 1 > k) {
+            // 2. Window becomes valid
+            if (j >= k - 1) {
 
-                // remove expired negative
+                // answer
+                ans.add(dq.isEmpty() ? 0 : arr[dq.peekFirst()]);
+
+                // remove outgoing element
                 if (!dq.isEmpty() && dq.peekFirst() == i) {
                     dq.pollFirst();
                 }
 
+                // slide window
                 i++;
-            }
-
-            // valid window
-            if (j - i + 1 == k) {
-
-                if (!dq.isEmpty()) {
-                    ans.add(arr[dq.peekFirst()]);
-                } else {
-                    ans.add(0);
-                }
             }
         }
 

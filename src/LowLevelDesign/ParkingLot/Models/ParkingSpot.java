@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 
 @Data
-public class  ParkingSpot extends BaseClass{
+public class ParkingSpot extends BaseClass{
 
     @Setter
     private ParkingSpotStatus parkingSpotStatus;

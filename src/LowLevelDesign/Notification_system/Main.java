@@ -4,6 +4,9 @@ import LowLevelDesign.Notification_system.Enum.ChannelType;
 import LowLevelDesign.Notification_system.Enum.NotificationType;
 import LowLevelDesign.Notification_system.Enum.Priority;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Main {
 
 
@@ -30,10 +33,17 @@ public class Main {
         NotificationService service =
                 new NotificationService(dispatcher);
 
-        Thread worker =
-                new Thread(new NotificationWorker(dispatcher));
+//        Thread worker =
+//                new Thread(new NotificationWorker(dispatcher));
+//
+//        worker.start();
 
-        worker.start();
+        ExecutorService executorService =
+                Executors.newFixedThreadPool(5);
+
+        for (int i = 0; i < 5; i++) {
+            executorService.submit(new NotificationWorker(dispatcher));
+        }
 
         Notification n1 =
                 new Notification(
