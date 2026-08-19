@@ -1,6 +1,6 @@
 package BinarySearch;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class AllocateBooks {
      /*
@@ -18,7 +18,13 @@ public class AllocateBooks {
         Example Output : 113
      */
 
-    public int books(ArrayList<Integer> C, int B) {
+    public static void main(String[] args) {
+        List<Integer> list = List.of(12, 34, 67, 90);
+        int B = 2;
+        System.out.println(books(list,B));
+    }
+
+    public static int books(List<Integer> C, int B) {
         if(B > C.size()){
             return -1;
         }
@@ -43,19 +49,19 @@ public class AllocateBooks {
 
     }
 
-    public boolean check(ArrayList<Integer> C, int B, int page){
-        int book = 1;
+    public static boolean check(List<Integer> C, int B, int page){
+        int students = 1;
         long totalpages = 0;
         for(int i=0;i<C.size();i++){
             if(totalpages + C.get(i) > page){
-                book++;
+                students++;
                 totalpages = C.get(i);
             }
             else{
                 totalpages += C.get(i);
             }
         }
-        if(book <= B){
+        if(students <= B){
             return true;
         }
         return false;

@@ -5,7 +5,8 @@ public class DistinctSubsequences {
     //Problem Statement : Given two strings s and t, return the number of distinct subsequences of s that equal t.
     //
     //A subsequence of a string is a new string generated from the original string with
-    // some characters (can be none) deleted without changing the relative order of the remaining characters. For example, "ace" is a subsequence of "abcde" while "aec" is not.
+    // some characters (can be none) deleted without changing the relative order of the remaining characters.
+    // For example, "ace" is a subsequence of "abcde" while "aec" is not.
     //
     //The task is to count how many different ways we can form t from s by deleting some (or no) characters from s.
     public static void main(String[] args) {

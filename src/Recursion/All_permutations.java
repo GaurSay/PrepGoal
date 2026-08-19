@@ -12,8 +12,8 @@ public class All_permutations {
 
 
 
-//        printAll(nums,nums.length,ds,freq);
-        permute(nums,0);
+        printAll(nums,nums.length,ds,freq);
+//        permute(nums,0);
     }
 
     private static void printAll(int[] nums, int n,List<Integer> ds,boolean[] freq) {

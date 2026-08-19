@@ -9,7 +9,11 @@ public class SquareRoot {
     If A is not a perfect square, return floor(sqrt(A)).
 
  */
-    public int sqrt(int A) {
+
+    public static void main(String[] args) {
+        System.out.println(sqrt(16));
+    }
+    public static int sqrt(int A) {
         long l = 0;
         long h = A;
         long ans =0;
@@ -17,10 +21,10 @@ public class SquareRoot {
         while(h-l>=e){
             long mid = (l+h) >> 1;
             if(mid*mid == A){
-                System.out.println(mid);
-                return (int)l;
+//                System.out.println(mid);
+                return (int)mid;
             }
-            if(mid*mid <A){
+            if(mid*mid <=A){
                 ans = mid;
                 l = mid;
             }

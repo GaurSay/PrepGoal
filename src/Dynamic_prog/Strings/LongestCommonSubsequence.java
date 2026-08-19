@@ -15,8 +15,8 @@ public class LongestCommonSubsequence {
         for(int row[] : dp){
             Arrays.fill(row,-1);
         }
-//        int ans = lcs_recursion(m - 1, n - 1, s1, s2, dp);
-//        System.out.println(ans);
+        int ans = lcs_recursion(m - 1, n - 1, s1, s2, dp);
+        System.out.println(dp[m-1][n-1]);
         tabular(s1,s2);
 
 

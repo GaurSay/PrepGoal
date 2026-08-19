@@ -11,11 +11,12 @@ public class LongestDivisibleSubset {
 
         int n = nums.length;
         int[] dp = new int[n];
+        Arrays.fill(dp,1);
 
         Arrays.sort(nums);
         int[] hash = new int[n];
         int lastIndex = 0;
-        int max = 0;
+        int max = 1;
 
         for(int i=0;i<n;i++){
             hash[i] = i;
@@ -43,6 +44,7 @@ public class LongestDivisibleSubset {
         for(int i =ans.size()-1;i>=0;i--){
             System.out.print(ans.get(i) + " ");
         }
+        //Collections.reverse(ans);
         System.out.println();
     }
 }
