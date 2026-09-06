@@ -58,7 +58,7 @@ public class Student {
         }
 
         public Builder setId(int id) {
-            Id = id;
+            this.Id = id;
             return this;
         }
 

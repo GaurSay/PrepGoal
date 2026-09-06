@@ -9,9 +9,11 @@ public class NearestElevatorStrategy
         implements ElevatorSelectionStrategy {
 
     @Override
-    public Elevator selectElevator(List<Elevator> elevators, int requestedFloor, Direction direction) {
+    public Elevator selectElevator(
+            List<Elevator> elevators,
+            ElevatorRequest request) {
         Elevator best = null;
-        int minDistance = Integer.MAX_VALUE;
+        int bestScore = Integer.MAX_VALUE;
 
         for (Elevator elevator : elevators) {
 
@@ -20,16 +22,57 @@ public class NearestElevatorStrategy
                 continue;
             }
 
-            int distance = Math.abs(
-                    elevator.getCurrentFloor()
-                            - requestedFloor);
+            int score = calculateScore(
+                    elevator,
+                    request);
 
-            if (distance < minDistance) {
-                minDistance = distance;
+            if (score < bestScore) {
+                bestScore = score;
                 best = elevator;
             }
         }
 
         return best;
+    }
+
+    private int calculateScore(
+            Elevator elevator,
+            ElevatorRequest request) {
+
+        int distance = Math.abs(
+                elevator.getCurrentFloor()
+                        - request.getFloor());
+
+        // Best case:
+        // Elevator is already moving in requested direction
+        // and request is ahead of it.
+
+        if (elevator.getDirection()
+                == request.getDirection()) {
+
+            if (request.getDirection() == Direction.UP
+                    && elevator.getCurrentFloor()
+                    <= request.getFloor()) {
+
+                return distance;
+            }
+
+            if (request.getDirection() == Direction.DOWN
+                    && elevator.getCurrentFloor()
+                    >= request.getFloor()) {
+
+                return distance;
+            }
+        }
+
+        // Idle elevator is the next best option
+        if (elevator.getDirection()
+                == Direction.IDLE) {
+
+            return distance + 100;
+        }
+
+        // Elevator moving in opposite direction
+        return distance + 1000;
     }
 }

@@ -24,9 +24,7 @@ public class ElevatorController {
 
         Elevator elevator =
                 strategy.selectElevator(
-                        elevators,
-                        floor,
-                        direction);
+                        elevators,new ElevatorRequest(floor,direction));
 
         if (elevator == null) {
             throw new IllegalStateException(

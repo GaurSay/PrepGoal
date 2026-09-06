@@ -27,7 +27,15 @@ public class LRU_CACHE {
         }else{
             return -1;
         }
-
+    }
+    public void put(int key, int value) {
+        if(map.containsKey(key)){
+            remove(map.get(key));
+        }
+        if(map.size() == capacity){
+            remove(tail.prev);
+        }
+        insert(new Node(key,value));
     }
 
     private void insert(Node node) {
@@ -44,15 +52,7 @@ public class LRU_CACHE {
         node.next.prev = node.prev;
     }
 
-    public void put(int key, int value) {
-        if(map.containsKey(key)){
-            remove(map.get(key));
-        }
-        if(map.size() == capacity){
-            remove(tail.prev);
-        }
-        insert(new Node(key,value));
-    }
+
 }
 
 class Node{

@@ -1,10 +1,26 @@
-package Google;
+package DataStructure_Design;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class VersionedDocumentStore {
+
+//    PUT(docId int, contents string, timestamp int) -> This will save the contents of that docId for that timestamp.
+//    There can be more than one call for a doc ID with differing timestamp,
+//    so we would essentially need to store versions for a given docId.
+//        GET(docId int, timestamp int) -> For the timestamp in input,
+//            return the content of that docId for the version just before the timestamp.
+//    If there is no content, return an empty string.
+//    The timestamp for PUT calls can be unordered.
+//    For eg.
+//    PUT(1, "abc", 10)
+//    PUT(2, "bcd", 11)
+//    PUT(1, "cde", 8)
+//    PUT(2, "def", 9)
+//    GET(1, 5) -> ""
+//    GET(1, 9) -> "cde"
+//    GET(2, 15) -> "bcd"
 
     private Map<Integer, TreeMap<Integer, String>> store;
 
@@ -15,8 +31,8 @@ public class VersionedDocumentStore {
     public void put(int docId, String content, int timestamp) {
         store.putIfAbsent(docId, new TreeMap<>());
         store.get(docId).put(timestamp, content);
+//        store.computeIfAbsent(docId,k-> new TreeMap<>()).put(timestamp,content);
     }
-
 
     public String get(int docId, int timestamp) {
         if(!store.containsKey(docId)){
