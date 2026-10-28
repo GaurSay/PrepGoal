@@ -1,20 +1,25 @@
-package Arrays;
+package Stack_Queue;
 
 import java.util.Stack;
 
-public class NextSmallerElement {
-    // on the left
+public class NextGreaterElement2 {
+
     public static void main(String[] args) {
-        int arr[] = {4,5,2,10,8};
-        // ans = -1 4 -1 2 2
+        int arr[] = {2,10,12,1,11};
 
         Stack<Integer> st = new Stack<>();
         int[] ans = new int[arr.length];
         int n = arr.length;
+        for(int i=n-2;i>=0;i--){
+            while(!st.isEmpty() && st.peek() <= arr[i]){
+                st.pop();
+            }
+            st.add(arr[i]);
+        }
 
-        for(int i=0;i<n;i++){
+        for(int i= arr.length-1;i>=0;i--){
 
-            while(!st.isEmpty() && st.peek() >= arr[i]){
+            while(!st.isEmpty() && st.peek() <= arr[i]){
                 st.pop();
             }
 
@@ -35,3 +40,4 @@ public class NextSmallerElement {
         System.out.println();
     }
 }
+

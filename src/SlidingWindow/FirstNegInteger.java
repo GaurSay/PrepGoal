@@ -21,7 +21,7 @@ public class FirstNegInteger {
         List<Integer> ans = new ArrayList<>();
         Deque<Integer> dq = new ArrayDeque<>();
 
-        int i = 0;
+        int left = 0;
 
         for (int j = 0; j < arr.length; j++) {
 
@@ -37,12 +37,12 @@ public class FirstNegInteger {
                 ans.add(dq.isEmpty() ? 0 : arr[dq.peekFirst()]);
 
                 // remove outgoing element
-                if (!dq.isEmpty() && dq.peekFirst() == i) {
+                if (!dq.isEmpty() && dq.peekFirst() == left) {
                     dq.pollFirst();
                 }
 
                 // slide window
-                i++;
+                left++;
             }
         }
 
